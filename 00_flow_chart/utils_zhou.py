@@ -1,4 +1,3 @@
-
 def show_describe(data):
     describe = data.describe().T
     for c in data.columns:
@@ -11,9 +10,14 @@ def show_describe(data):
         
 def show_number_describe(data):
     data_tmp = data.select_dtypes(include = ["number"])
-    show_describe(data_tmp)
+    print('共有：[{0}]条样本，特征数为：[{1}]，其中有[{2}]个特征是number'.format(
+            data.shape[0], data.shape[1], data_tmp.shape[1]))
+    return show_describe(data_tmp)
 
 def show_object_describe(data):
     data_tmp = data.select_dtypes(include = ["object"])
-    show_describe(data_tmp)
+    print('共有：[{0}]条样本，特征数为：[{1}]，其中有[{2}]个特征是object'.format(
+            data.shape[0], data.shape[1], data_tmp.shape[1]))
+    return show_describe(data_tmp) 
 
+    
